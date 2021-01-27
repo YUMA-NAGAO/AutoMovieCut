@@ -1,7 +1,7 @@
 # ・環境構築手順
 ## 環境
 Anacondaをすでに導入していることが条件です。
-Anacondaの導入方法は、(こちら)[https://www.youtube.com/watch?v=1s20lu7_SUM&t=3s]
+まだ導入していない場合は、[こちら](https://www.youtube.com/watch?v=1s20lu7_SUM&t=3s)を参考にして、導入してください。
 ## FFmpegの導入
 使用したバージョン
 4.3.1を使用しました。
