@@ -1,4 +1,7 @@
 # ・環境構築手順
+## 環境
+Anacondaをすでに導入していることが条件です。
+Anacondaの導入方法は、(こちら)[https://www.youtube.com/watch?v=1s20lu7_SUM&t=3s]
 ## FFmpegの導入
 使用したバージョン
 4.3.1を使用しました。
@@ -18,7 +21,8 @@
 	
 1. ターミナルに「brew install ffmpeg」
 	
-
+### natsortのインストール
+1. pip install natsortを実行(もしくはconda install)
 
 # 【動画の自動カット】
 
