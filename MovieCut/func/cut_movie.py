@@ -1,6 +1,7 @@
-import subprocess
+import time
 import os
-import natsort
+import subprocess
+
 
 
 def get_movie(wk_dir):
@@ -40,8 +41,10 @@ def output_silent(movie1, dB1):
 
 
 if __name__ == "__main__":
-    movie_list = get_movie("../input")
+    subprocess.run(["mkdir","../output"])
 
+    movie_list = get_movie("../input")
+    start =time.time()
     for movie in movie_list:
         print("処理する動画")
         print(movie)
@@ -65,4 +68,8 @@ if __name__ == "__main__":
                 word = word.replace(",", "")
                 if float(word) < 0.5:
                     os.remove(movie)
+
+    ProcessTime=time.time()-start
+
+    print(ProcessTime)
 
