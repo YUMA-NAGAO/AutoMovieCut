@@ -5,7 +5,8 @@ Anacondaをすでに導入していることが条件です。
 ## FFmpegの導入
 使用したバージョン
 4.3.1を使用しました。
-バージョンの差異による環境構築失敗の防止のために、(GoogleDrive)[https://drive.google.com/file/d/1Qz5n41LnCyioVHJBpL-K2_zUVJx560Qy/view?usp=sharing]に今回使用したバージョンを誰でもアクセスできるようにします。
+バージョンの差異による環境構築失敗の防止のために、[GoogleDrive](https://drive.google.com/file/d/1Qz5n41LnCyioVHJBpL-K2_zUVJx560Qy/view?usp=sharing)に今回使用したバージョンを誰でもアクセスできるようにします。
+inputとoutputのフォルダが削除されてしまうので、一文字だけ入れたtxtファイルを作成しておきます。
 
 ### Windowsの場合
 [このサイト](https://rikoubou.hatenablog.com/entry/2019/11/07/144533)を参考にすると、導入が容易です。わからない場合は、「ffmpeg windows」などで調べてみてください。
