@@ -10,12 +10,12 @@ def get_movie(wk_dir):
     return files
 
 
-def output_silent(movie1, dB1):
+def cut_silent(movie1, dB1):
     os.chdir("../input")
-    output = subprocess.run(
+    cut = subprocess.run(
         ["ffmpeg", "-i", movie1, "-af", "silencedetect=noise={}dB:d=0.3".format(dB1), "-f", "null", "-"],
         stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    ss = str(output)
+    ss = str(cut)
     lines = ss.replace("\\r", "")
     lines = lines.split('\\n')
     time_list = []
@@ -30,18 +30,18 @@ def output_silent(movie1, dB1):
     silence_section_list = list(zip(*[iter(time_list)] * 2))
     movie_name = movie1.split(".")
     """if str(silence_section_list[0][0]) != "0.0":
-        split_file1 = "../output/" + movie_name[0] + "_0" + ".mp4"
+        split_file1 = "../cut/" + movie_name[0] + "_0" + ".mp4"
         subprocess.run(["ffmpeg", "-ss", str(0), "-i", movie1, "-t", str(silence_section_list[1][0]), split_file1], stdout=subprocess.PIPE, stderr=subprocess.PIPE)"""
 
     for i in range(len(silence_section_list) - 1):
-        split_file = "../output/" + movie_name[0] + "_" + str(i + 1) + ".mp4"
+        split_file = "../cut/" + movie_name[0] + "_" + str(i + 1) + ".mp4"
         subprocess.run(["ffmpeg", "-ss", str(silence_section_list[i][1]), "-i", movie1, "-t", str(silence_section_list[i + 1][0] - silence_section_list[i][1]), split_file], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         print(movie_name[0] + "_" + str(i + 1) + ".mp4")
 
 
 
 if __name__ == "__main__":
-    subprocess.run(["mkdir","../output"])
+    subprocess.run(["mkdir","../cut"])
 
     movie_list = get_movie("../input")
     start =time.time()
@@ -51,16 +51,16 @@ if __name__ == "__main__":
         dB = input("カットする音量の閾値を入力(dB)、デフォルトの場合はそのままエンター ※デフォルト-33dB>", )
         if dB == "":
             dB = "-33"
-        output_silent(movie, dB)
+        cut_silent(movie, dB)
 
-    movie_list = get_movie("../output")
+    movie_list = get_movie("../cut")
     for movie in movie_list:
-        output_file = subprocess.run(["ffmpeg", "-i", movie, "-f", "h264_videotoolbox", "-"], stdout=subprocess.PIPE,
+        cut_file = subprocess.run(["ffmpeg", "-i", movie, "-f", "h264_videotoolbox", "-"], stdout=subprocess.PIPE,
                                   stderr=subprocess.PIPE)
-        s = str(output_file)
+        s = str(cut_file)
         lines1 = s.replace("\\r", "")
         lines1 = lines1.split('\\n')
-        os.chdir("../output")
+        os.chdir("../cut")
         for line in lines1:
             if "Duration" in line:
                 words = line.split(" ")
