@@ -9,3 +9,9 @@
 Icon?
 ehthumbs.db
 Thumbs.db
+
+# ============ #
+# Movie Files  #
+# ============ #
+*.mov
+*.mp4
