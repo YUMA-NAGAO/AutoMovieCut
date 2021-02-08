@@ -61,7 +61,7 @@ if __name__ == "__main__":
 
     movie_list = get_movie("../cut")
     for movie in movie_list:
-        cut_file = subprocess.run(["ffmpeg", "-i", movie, "-f", "null", "-"], stdout=subprocess.PIPE,
+        cut_file = subprocess.run(["ffmpeg", "-i", movie, "-f", "h264_videotoolbox", "-"], stdout=subprocess.PIPE,
                                   stderr=subprocess.PIPE)
         s = str(cut_file)
         lines1 = s.replace("\\r", "")
