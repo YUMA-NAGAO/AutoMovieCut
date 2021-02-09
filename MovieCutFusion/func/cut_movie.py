@@ -44,15 +44,16 @@ def merge_movie(movie_list1):
         lines = [f"file '{line1}'" for line1 in movie_list1]
         fp.write("\n".join(lines))
     subprocess.run(["ffmpeg", "-f", "concat", "-safe", "0", "-i", "tmp.txt", "-c", "copy",FileName ], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    subprocess.run(["mkdir","../merged"])
     subprocess.run(["mv","out.mp4","../merged"])
 
 
 if __name__ == "__main__":
     start =time.time()
     subprocess.run(["mkdir","../cut"])
-    movie_list = get_movie("../input")
-    
-    for movie in movie_list:
+    input_movie = get_movie("../input")
+
+    for movie in input_movie:
         print("処理する動画")
         print(movie)
         dB = input("カットする音量の閾値を入力(dB)、デフォルトの場合はそのままエンター ※デフォルト-33dB>", )
@@ -81,7 +82,6 @@ if __name__ == "__main__":
 
     ProcessTime=time.time()-start
     minutes=str(ProcessTime//60)
-    second=str(ProcessTime%60)
+    second=str((ProcessTime%60)//1)
 
     print(minutes+"分"+second+"秒")
-
