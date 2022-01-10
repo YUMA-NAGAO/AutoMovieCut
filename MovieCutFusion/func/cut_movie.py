@@ -37,7 +37,7 @@ def cut_silent(movie1, dB1):
 
 
 def merge_movie(movie_list1):
-    os.chdir("../cut")
+    os.chdir("../merged")
     FileName="out.mp4"
     movie_list1 = [ m for m in movie_list1]
     with open("tmp.txt", "w") as fp:
